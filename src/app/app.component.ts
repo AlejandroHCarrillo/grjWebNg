@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'graja-web-ng';
+  title = 'Graja - Un apoyo par tu futuro';
 }
