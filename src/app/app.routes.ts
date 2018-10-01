@@ -2,6 +2,7 @@ import { ContactoComponent } from './components/contacto/contacto.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { ComisionistasComponent } from './components/comisionistas/comisionistas.component';
 import { AsociadosComponent } from './components/asociados/asociados.component';
+import { AsociadoComponent } from './components/asociado/asociado.component';
 import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./components/home/home.component";
 import { MisionComponent } from "./components/mision/mision.component";
@@ -20,6 +21,7 @@ const APP_ROUTES : Routes = [
     { path : 'contacto', component : ContactoComponent },
     { path : 'aviso-privacidad', component : AvisoprivacidadComponent },
     { path : 'asociados', component : AsociadosComponent },
+    { path : 'asociado/:id', component : AsociadoComponent },
     { path : 'usuarios', component : UsuariosComponent },
     { path : 'comisionistas', component : ComisionistasComponent },
     { path : '**', pathMatch: 'full', redirectTo : 'home' }
