@@ -1,0 +1,282 @@
+<div class="container">
+
+  <h4>Asociados <small>editar</small></h4>
+  <hr>
+  <form (ngSubmit)="guardar(forma)" #forma="ngForm" novalidate="" class="was-validated">
+
+    <div class="form-group row">
+
+      <div class="form-group col-md-4">
+        <label for="inputNombre">Nombre</label>
+        <input class="form-control " type="text" placeholder="Nombre" name="nombre" id="inputNombre" minlength="5"
+          maxlength="50" required [(ngModel)]="asociado.nombre" #nombre="ngModel">
+        <div *ngIf="nombre.touched && nombre.errors?.required " class="invalid-feedback">
+          El nombre es requerido
+        </div>
+        <div *ngIf="nombre.errors?.minlength" class="invalid-feedback">
+          La longitud minima del nombre es de {{ nombre.errors.minlength.requiredLength }} caracteres
+        </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="inputApellidoPaterno">Apellido Paterno</label>
+        <input class="form-control" type="text" placeholder="Apellido Paterno" name="apellidoPaterno" id="inputApellidoPaterno"
+          [(ngModel)]="asociado.apellidoPaterno" required #apellidoPaterno="ngModel">
+        <div *ngIf="apellidoPaterno.touched && apellidoPaterno.errors?.required " class="invalid-feedback">
+          El apellido paterno es requerido
+        </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="inputApellidoMaterno">Apellido Materno</label>
+        <input class="form-control" type="text" placeholder="Apellido Materno" name="apellidoMaterno" [(ngModel)]="asociado.apellidoMaterno"
+          id="inputApellidoMaterno" required #apellidoMaterno="ngModel">
+        <div *ngIf="apellidoMaterno.touched && apellidoMaterno.errors?.required " class="invalid-feedback">
+          El apellido materno es requerido
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+
+      <div class="form-group col-md-3">
+        <label for="inputFechaNacimiento">Fecha de Nacimiento</label>
+        <input class="form-control" type="text" placeholder="Fecha de Nacimiento" name="fechaNacimiento" [(ngModel)]="asociado.fechaNacimiento"
+          id="inputFechaNacimiento" required #fechaNacimiento="ngModel">
+        <div *ngIf="fechaNacimiento.touched && fechaNacimiento.errors?.required " class="invalid-feedback">
+          La fecha de nacimiento es requerida
+        </div>
+      </div>
+
+      <div class="form-group  col-md-3">
+        <label>Sexo</label>
+        <div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input class="form-check-input" type="radio" name="sexoRadio" id="sexoRadio1" value="H" [(ngModel)]="asociado.sexo"
+              checked>
+            <label for="sexoRadio1">
+              Hombre
+            </label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input class="form-check-input" type="radio" name="sexoRadio" id="sexoRadio2" value="M" [(ngModel)]="asociado.sexo">
+            <label for="sexoRadio2">
+              Mujer
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label for="inputContacto">Contacto Alternativo</label>
+        <input class="form-control " type="text" placeholder="Contacto Alternativo" name="contacto" minlength="5" maxlength="20" id="inputContacto"
+          [(ngModel)]="asociado.contactoAlternativo" #contacto="ngModel">
+      </div>
+
+    </div>
+
+    <hr>
+
+    <div class="form-row">
+
+      <div class="form-group col-md-4">
+        <label class="col-form-label">RFC</label>
+        <input class="form-control" type="text" placeholder="Registro Federal de causantes" name="rfc" [(ngModel)]="asociado.rfc"
+          required #rfc="ngModel">
+        <div *ngIf="rfc.touched && rfc.errors?.required " class="invalid-feedback">
+          El RFC es requerido
+        </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label class="col-form-label">CURP</label>
+        <input class="form-control" type="text" placeholder="ingrese la CURP" name="curp" [(ngModel)]="asociado.curp"
+          required #curp="ngModel">
+        <div *ngIf="curp.touched && curp.errors?.required " class="invalid-feedback">
+          La CURP es requerida
+        </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label class="col-form-label">Número de seguro Social</label>
+        <input class="form-control" type="text" placeholder="Número de seguro Social" name="nss" [(ngModel)]="asociado.nss"
+          required #nss="ngModel">
+        <div *ngIf="nss.touched && nss.errors?.required " class="invalid-feedback">
+          El Numero de seguro social es requerido
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+
+      <div class="form-group  col-md-3">
+        <label class="col-form-label">Fecha de alta IMSS</label>
+        <input class="form-control" type="text" placeholder="Fecha de alta IMSS" name="fechaAltaImss" [(ngModel)]="asociado.fechaAltaImss"
+          required #fechaAltaImss="ngModel">
+        <div *ngIf="fechaAltaImss.touched && fechaAltaImss.errors?.required " class="invalid-feedback">
+          La fecha de alta IMSS es requerida
+        </div>
+      </div>
+
+      <div class="form-group col-md-3">
+        <label class="col-form-label">Semanas Cotizadas</label>
+        <input class="form-control" type="text" placeholder="semanasCotizadas" name="semanasCotizadas" [(ngModel)]="asociado.semanasCotizadas"
+          #semanasCotizadas="ngModel">
+      </div>
+
+      <div class="form-group col-md-3">
+        <label class="col-form-label">Lote Alta</label>
+        <input class="form-control" type="text" placeholder="loteAlta" name="loteAlta" [(ngModel)]="asociado.LoteAlta"
+          #loteAlta="ngModel">
+      </div>
+
+      <div class="form-group col-md-3">
+        <label class="col-form-label">Lote Baja</label>
+        <input class="form-control" type="text" placeholder="loteBaja" name="loteBaja" [(ngModel)]="asociado.LoteBaja"
+          #loteAlta="ngModel">
+      </div>
+
+      <div class="form-group  col-md-3">
+          <label for="inputFechaNacimiento"> Clave / Referencia </label>
+          <input class="form-control" type="text" 
+                 placeholder="Clave o Referencia GRAJA" 
+                 name="clave" [(ngModel)]="asociado.claveGraja"
+                 id="inputClaveGraja" 
+                 #claveGraja="ngModel">
+      </div>
+  
+      <div class="form-group  col-md-3">
+          <label for="inputSalariosMinimos"> Salarios Mínimos </label>
+          <input class="form-control" type="text" 
+                 placeholder="Salarios minimos dados de alta" 
+                 name="salarios" [(ngModel)]="asociado.salariosMinimos"
+                 id="inputSalariosMinimos" 
+                 #salarios="ngModel">
+      </div>
+  
+    </div>
+
+    <hr>
+
+    <div class="form-row">
+
+      <div class="form-group col-md-4">
+        <label class="col-form-label">Teléfono Fijo</label>
+        <input class="form-control" type="text" placeholder="Teléfono Fijo" name="telefono" [(ngModel)]="asociado.telefono"
+          required #telefono="ngModel">
+        <div *ngIf="telefono.touched && telefono.errors?.required " class="invalid-feedback">
+          El telefono es requerido
+        </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label class="col-form-label">Celular</label>
+        <input class="form-control" type="text" placeholder="Celular" name="celular" [(ngModel)]="asociado.celular"
+          required #celular="ngModel">
+        <div *ngIf="celular.touched && celular.errors?.required " class="invalid-feedback">
+          El telefono celular es requerido
+        </div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label class="col-form-label">Pais</label>
+        <select [(ngModel)]="asociado.pais" name="pais" class="form-control">
+          <option value="">Selecccione un pais</option>
+          <option *ngFor="let pais of paises" [value]="pais.codigo">{{ pais.nombre }}</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label class="col-form-label ">Correo</label>
+        <input class="form-control" type="email" placeholder="Correo electrónico" name="correoElectronico" [(ngModel)]="asociado.correoElectronico"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required #correoElectronico="ngModel">
+        <div *ngIf="correoElectronico.touched && correoElectronico.errors?.required " class="invalid-feedback">
+          El correo es requerido
+        </div>
+        <div *ngIf="correoElectronico.touched && correoElectronico.errors?.pattern " class="invalid-feedback">
+          El correo ingresado no es un correo válido.
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="form-group">
+      <label for="inputCalle">Direccion Calle y Numero </label>
+      <input type="text" class="form-control" id="inputCalle" placeholder="Calle y Numero" name="calle" id="inputCalle"
+        minlength="5" maxlength="100" required [(ngModel)]="asociado.calle" #calle="ngModel">
+    </div>
+    <div class="form-group">
+      <label for="inputColonia">Colonia</label>
+      <input type="text" class="form-control" id="inputColonia" placeholder="Colonia, poblacion o barrio" name="colonia"
+        id="inputColonia" minlength="5" maxlength="100" required [(ngModel)]="asociado.colonia" #colonia="ngModel">
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <label for="inputState">Estado</label>
+        <select id="inputState" class="form-control">
+          <option selected>Choose...</option>
+          <option>...</option>
+        </select>
+      </div>
+      <div class="form-group col-md-5">
+        <label for="inputMunicipio">Municipio</label>
+        <select id="inputMunicipio" class="form-control">
+          <option selected>Choose...</option>
+          <option>...</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-2">
+        <label for="inputCodigoPostal">Zip</label>
+        <input type="text" class="form-control" id="codigoPostal" name="InputCodigoPostal" id="inputCodigoPostal"
+          minlength="5" maxlength="5" required [(ngModel)]="asociado.codigoPostal" #codigoPostal="ngModel">
+      </div>
+    </div>
+    <hr>
+
+    <div class="form-group row">
+
+        <div class="form-group col-md-12">
+          <label for="inputNombre">Actividad economica</label>
+          <input class="form-control " type="text" 
+                 placeholder="Actividad economica del asociado" 
+                 name="actividadEconomica" 
+                 id="inputActividadEconomica"
+            maxlength="50" required [(ngModel)]="asociado.actividadEconomica" #actividadEconomica="ngModel">
+          <div *ngIf="actividadEconomica.touched && actividadEconomica.errors?.required " class="invalid-feedback">
+            La actividad economica es requerida
+          </div>
+        </div>
+
+        <div class="form-group col-md-12">
+          <label for="inputNombre">Decripción actividad económica</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                    placeholder="Descripcion de la actividad economica" 
+                    name="descripcionActividadEconomica" 
+                    id="inputDescripcionActividadEconomica"
+                    maxlength="500" 
+                    required 
+                    [(ngModel)]="asociado.descripcionActividadEconomica" 
+                    #descripcionActividadEconomica="ngModel"
+          >{{ asociado.descripcionActividadEconomica }}</textarea>
+          <div *ngIf="descripcionActividadEconomica.touched && descripcionActividadEconomica.errors?.required " class="invalid-feedback">
+              La descripción de la actividad económica es requerida
+            </div>
+        </div>
+
+      </div>  
+
+    <div class="form-group row">
+      <label class="col-12 col-form-label">&nbsp;</label>
+      <div class="input-group col-md-8">
+        <button type="submit" class="btn btn-outline-primary" [disabled]="!forma.valid">
+          Guardar
+        </button>
+      </div>
+    </div>
+
+  </form>
+  
+</div>

@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 // Rutas
 import { APP_ROUTING } from './app.routes';
 
 // Servicios
+import { AsociadosService } from './services/asociados.service';
 
 //Componentes
 import { AppComponent } from './app.component';
@@ -21,6 +23,12 @@ import { ComisionistasComponent } from './components/comisionistas/comisionistas
 import { MovimientosComponent } from './components/movimientos/movimientos.component';
 import { AvisoprivacidadComponent } from './components/avisoprivacidad/avisoprivacidad.component';
 import { AsociadosComponent } from './components/asociados/asociados.component';
+import { CuentasbancariasComponent } from './components/cuentasbancarias/cuentasbancarias.component';
+import { AsociadoComponent } from './components/asociado/asociado.component';
+import { ComisionistaComponent } from './components/comisionista/comisionista.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
+import { EmpleadoComponent } from './components/empleado/empleado.component';
+import { EmpleadosComponent } from './components/empleados/empleados.component';
 
 
 @NgModule({
@@ -38,14 +46,22 @@ import { AsociadosComponent } from './components/asociados/asociados.component';
     ComisionistasComponent,
     MovimientosComponent,
     AvisoprivacidadComponent,
-    AsociadosComponent
+    AsociadosComponent,
+    CuentasbancariasComponent,
+    AsociadoComponent,
+    ComisionistaComponent,
+    UsuarioComponent,
+    EmpleadoComponent,
+    EmpleadosComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule, 
+    // HttpModule, 
     APP_ROUTING
   ],
   providers: [
-    
+    AsociadosService
   ],
   bootstrap: [AppComponent]
 })
