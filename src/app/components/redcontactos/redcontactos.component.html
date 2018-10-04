@@ -1,0 +1,19 @@
+<div class="container">
+  <h3> Red de Contactos </h3>
+
+  <hr>
+
+  <div class="card-columns">
+
+  <div class="card animated fadeIn" *ngFor="let element of actividadesList; let i=index">
+      <!-- <img class="card-img-top" [src]="element.img" [alt]="element.nombre"> -->
+      <div class="card-body">
+        <h5 class="card-title">{{ element.actividadEconomica }}</h5>
+        <p class="card-text">{{ element.descripcion }}</p>    
+        <button class="btn btn-outline-primary btn-block">Ver más...</button>
+        <!-- <a class="btn btn-outline-primary btn-block" [routerLink] = "['/element', i]" >Ver más...</a> -->
+      </div>
+    </div>
+  </div>
+
+</div>

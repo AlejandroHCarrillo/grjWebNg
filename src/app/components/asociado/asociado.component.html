@@ -1,6 +1,6 @@
 <div class="container">
 
-  <h4>Asociados <small>editar</small></h4>
+  <h4>Asociado <small *ngIf="asociadoId >= 0">editar</small> <small *ngIf="asociadoId == undefined">nuevo</small></h4>
   <hr>
   <form (ngSubmit)="guardar(forma)" #forma="ngForm" novalidate="" class="was-validated">
 
@@ -48,7 +48,7 @@
         </div>
       </div>
 
-      <div class="form-group  col-md-3">
+      <div class="form-group  col-md-9">
         <label>Sexo</label>
         <div>
           <div class="custom-control custom-radio custom-control-inline">
@@ -66,11 +66,13 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="form-row">
 
       <div class="form-group col-md-12">
         <label for="inputContacto">Contacto Alternativo</label>
-        <input class="form-control " type="text" placeholder="Contacto Alternativo" name="contacto" minlength="5" maxlength="20" id="inputContacto"
-          [(ngModel)]="asociado.contactoAlternativo" #contacto="ngModel">
+        <input class="form-control " type="text" placeholder="Contacto Alternativo" name="contacto" minlength="5"
+          maxlength="20" id="inputContacto" [(ngModel)]="asociado.contactoAlternativo" #contacto="ngModel">
       </div>
 
     </div>
@@ -137,23 +139,17 @@
       </div>
 
       <div class="form-group  col-md-3">
-          <label for="inputFechaNacimiento"> Clave / Referencia </label>
-          <input class="form-control" type="text" 
-                 placeholder="Clave o Referencia GRAJA" 
-                 name="clave" [(ngModel)]="asociado.claveGraja"
-                 id="inputClaveGraja" 
-                 #claveGraja="ngModel">
+        <label for="inputFechaNacimiento"> Clave / Referencia </label>
+        <input class="form-control" type="text" placeholder="Clave o Referencia GRAJA" name="clave" [(ngModel)]="asociado.claveGraja"
+          id="inputClaveGraja" #claveGraja="ngModel">
       </div>
-  
+
       <div class="form-group  col-md-3">
-          <label for="inputSalariosMinimos"> Salarios Mínimos </label>
-          <input class="form-control" type="text" 
-                 placeholder="Salarios minimos dados de alta" 
-                 name="salarios" [(ngModel)]="asociado.salariosMinimos"
-                 id="inputSalariosMinimos" 
-                 #salarios="ngModel">
+        <label for="inputSalariosMinimos"> Salarios Mínimos </label>
+        <input class="form-control" type="text" placeholder="Salarios minimos dados de alta" name="salarios"
+          [(ngModel)]="asociado.salariosMinimos" id="inputSalariosMinimos" #salarios="ngModel">
       </div>
-  
+
     </div>
 
     <hr>
@@ -238,35 +234,27 @@
 
     <div class="form-group row">
 
-        <div class="form-group col-md-12">
-          <label for="inputNombre">Actividad economica</label>
-          <input class="form-control " type="text" 
-                 placeholder="Actividad economica del asociado" 
-                 name="actividadEconomica" 
-                 id="inputActividadEconomica"
-            maxlength="50" required [(ngModel)]="asociado.actividadEconomica" #actividadEconomica="ngModel">
-          <div *ngIf="actividadEconomica.touched && actividadEconomica.errors?.required " class="invalid-feedback">
-            La actividad economica es requerida
-          </div>
+      <div class="form-group col-md-12">
+        <label for="inputNombre">Actividad economica</label>
+        <input class="form-control " type="text" placeholder="Actividad economica del asociado" name="actividadEconomica"
+          id="inputActividadEconomica" maxlength="50" required [(ngModel)]="asociado.actividadEconomica"
+          #actividadEconomica="ngModel">
+        <div *ngIf="actividadEconomica.touched && actividadEconomica.errors?.required " class="invalid-feedback">
+          La actividad economica es requerida
         </div>
+      </div>
 
-        <div class="form-group col-md-12">
-          <label for="inputNombre">Decripción actividad económica</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                    placeholder="Descripcion de la actividad economica" 
-                    name="descripcionActividadEconomica" 
-                    id="inputDescripcionActividadEconomica"
-                    maxlength="500" 
-                    required 
-                    [(ngModel)]="asociado.descripcionActividadEconomica" 
-                    #descripcionActividadEconomica="ngModel"
-          >{{ asociado.descripcionActividadEconomica }}</textarea>
-          <div *ngIf="descripcionActividadEconomica.touched && descripcionActividadEconomica.errors?.required " class="invalid-feedback">
-              La descripción de la actividad económica es requerida
-            </div>
+      <div class="form-group col-md-12">
+        <label for="inputNombre">Decripción actividad económica</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Descripcion de la actividad economica"
+          name="descripcionActividadEconomica" id="inputDescripcionActividadEconomica" maxlength="500" required
+          [(ngModel)]="asociado.descripcionActividadEconomica" #descripcionActividadEconomica="ngModel">{{ asociado.descripcionActividadEconomica }}</textarea>
+        <div *ngIf="descripcionActividadEconomica.touched && descripcionActividadEconomica.errors?.required " class="invalid-feedback">
+          La descripción de la actividad económica es requerida
         </div>
+      </div>
 
-      </div>  
+    </div>
 
     <div class="form-group row">
       <label class="col-12 col-form-label">&nbsp;</label>
@@ -278,5 +266,5 @@
     </div>
 
   </form>
-  
+
 </div>

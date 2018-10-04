@@ -1,3 +1,5 @@
+import { LoginComponent } from './components/login/login.component';
+import { RedcontactosComponent } from './components/redcontactos/redcontactos.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { ComisionistasComponent } from './components/comisionistas/comisionistas.component';
@@ -10,6 +12,7 @@ import { PreguntasComponent } from "./components/preguntas/preguntas.component";
 import { RequisitosComponent } from "./components/requisitos/requisitos.component";
 import { ServiciosComponent } from "./components/servicios/servicios.component";
 import { AvisoprivacidadComponent } from './components/avisoprivacidad/avisoprivacidad.component';
+import { AuthGardService } from "./services/auth-gard.service";
 // import { Component } from "./components//.component";
 
 const APP_ROUTES : Routes = [
@@ -19,10 +22,24 @@ const APP_ROUTES : Routes = [
     { path : 'requisitos', component : RequisitosComponent },
     { path : 'servicios', component : ServiciosComponent },
     { path : 'contacto', component : ContactoComponent },
+    {   path : 'redcontactos', 
+        component : RedcontactosComponent, 
+        canActivate: [ AuthGardService ]
+    },
     { path : 'aviso-privacidad', component : AvisoprivacidadComponent },
-    { path : 'asociados', component : AsociadosComponent },
-    { path : 'asociado/:id', component : AsociadoComponent },
-    { path : 'usuarios', component : UsuariosComponent },
+    {   path : 'asociados', 
+        component : AsociadosComponent, 
+        canActivate: [ AuthGardService ] },
+    {   path : 'asociado', 
+        component : AsociadoComponent, 
+        canActivate: [ AuthGardService ]  },
+    {   path : 'asociado/:id', 
+        component : AsociadoComponent, 
+        canActivate: [ AuthGardService ]  },
+    {   path : 'usuarios', 
+        component : UsuariosComponent, 
+        canActivate: [ AuthGardService ]  },
+    { path : 'login', component : LoginComponent },
     { path : 'comisionistas', component : ComisionistasComponent },
     { path : '**', pathMatch: 'full', redirectTo : 'home' }
 ];

@@ -7,6 +7,8 @@ import { APP_ROUTING } from './app.routes';
 
 // Servicios
 import { AsociadosService } from './services/asociados.service';
+import { AuthService } from './services/auth.service';
+import { AuthGardService } from './services/auth-gard.service';
 
 //Componentes
 import { AppComponent } from './app.component';
@@ -29,6 +31,8 @@ import { ComisionistaComponent } from './components/comisionista/comisionista.co
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { EmpleadoComponent } from './components/empleado/empleado.component';
 import { EmpleadosComponent } from './components/empleados/empleados.component';
+import { RedcontactosComponent } from './components/redcontactos/redcontactos.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -52,7 +56,9 @@ import { EmpleadosComponent } from './components/empleados/empleados.component';
     ComisionistaComponent,
     UsuarioComponent,
     EmpleadoComponent,
-    EmpleadosComponent
+    EmpleadosComponent,
+    RedcontactosComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +67,9 @@ import { EmpleadosComponent } from './components/empleados/empleados.component';
     APP_ROUTING
   ],
   providers: [
-    AsociadosService
+    AsociadosService,
+    AuthService, 
+    AuthGardService
   ],
   bootstrap: [AppComponent]
 })

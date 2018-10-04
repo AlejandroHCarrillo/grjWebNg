@@ -1,10 +1,11 @@
+import { ActividadEconomica } from './asociados.service';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AsociadosService {
-  //Dummy Data
+  //Dummy Data  
   private asociados: AsociadoFull[] = [
     {
       idx: 0,
@@ -19,7 +20,7 @@ export class AsociadosService {
       rfc: "JKMN12232323",
       curp: "qwe232354s12werwe",
       fechaNacimiento: new Date("1985-05-09"),
-      fechaIngresoGraja: new Date ("2017-08-12"),
+      fechaIngresoGraja: new Date("2017-08-12"),
       fechaAltaImss: new Date("1998-08-12"),
 
       calle: "Del a amargura",
@@ -34,32 +35,32 @@ export class AsociadosService {
 
       contactoAlternativo: "El Chido",
       claveGraja: "MyClaveGraja",
-    
+
       actividadEconomica: "Ventas",
       descripcionActividadEconomica: "Vendo chacharas en el metro",
-    
+
       LoteAlta: "1234",
-      LoteBaja: "99876", 
-    
+      LoteBaja: "99876",
+
       estatus: 1,
       salariosMinimos: 11,
       comisionistaId: 1
-  
+
     },
     {
-      idx : 1,
+      idx: 1,
       nss: "6798909090",
       nombre: "Elmer",
       apellidoPaterno: "Homero",
       apellidoMaterno: "Mc Cannon",
-      sexo:"M",
+      sexo: "M",
       telefono: "123-123-123",
       celular: "1231-1231",
       correoElectronico: "jhonkmaney@gmail.com",
       rfc: "EHM0590",
       curp: "qwe232354s12werwe",
       fechaNacimiento: new Date("1985-05-09"),
-      fechaIngresoGraja: new Date ("2017-08-12"),
+      fechaIngresoGraja: new Date("2017-08-12"),
       fechaAltaImss: new Date("1998-08-12"),
 
       calle: "De la amargura",
@@ -74,13 +75,13 @@ export class AsociadosService {
 
       contactoAlternativo: "El Viejo",
       claveGraja: "aaa-a",
-    
+
       actividadEconomica: "Cazador",
       descripcionActividadEconomica: "Cazo liebres y conejos",
-    
+
       LoteAlta: "3456",
-      LoteBaja: "8765", 
-    
+      LoteBaja: "8765",
+
       estatus: 1,
       salariosMinimos: 22,
       comisionistaId: 1
@@ -88,6 +89,14 @@ export class AsociadosService {
     }
   ]
 
+  actividadesEconomicas : ActividadEconomica[] = [{
+    actividadEconomica : "ventas",
+    descripcion : "vendo chacharas"
+  }, {
+    actividadEconomica : "Banquetes",
+    descripcion : "Banquetes a domicilio"
+  }
+]
 
   constructor() {
     console.log("Contructor servicios Asociados");
@@ -114,6 +123,25 @@ export class AsociadosService {
       }
     }
     return asociadosEncontrados
+  }
+
+  public getActividadesEconomicas(): ActividadEconomica[] {
+
+    this.asociados.forEach(element => {
+      let actEco : ActividadEconomica;
+
+      console.log(element.actividadEconomica);
+      console.log(element.descripcionActividadEconomica);
+
+      // if (element.actividadEconomica != undefined) {
+          // actEco.actividadEconomica = '2';//element.actividadEconomica;
+        //  actEco.descripcion = "lorem " //element.descripcionActividadEconomica;
+      // }
+
+      // actividadesEconomicas.push( ActividadEconomica { actividadEconomica : element.actividadEconomica, descripcion : element.descripcionActividadEconomica } );
+    });
+
+    return this.actividadesEconomicas;
   }
 
 }
@@ -169,9 +197,15 @@ export interface AsociadoFull {
   descripcionActividadEconomica?: string,
 
   LoteAlta?: string,
-  LoteBaja?: string, 
+  LoteBaja?: string,
 
   estatus: number,
   salariosMinimos: number,
   comisionistaId: number
+}
+
+export interface ActividadEconomica {
+  idx?: number,
+  actividadEconomica: string,
+  descripcion: string
 }
